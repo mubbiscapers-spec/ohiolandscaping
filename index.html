@@ -1,40 +1,38 @@
 export default {
   async fetch(request, env, ctx) {
-    console.info({ message: 'Mubbi Landscaping site served via Worker!' }); 
+    console.info({ message: 'Mubbi Landscaping site served via Worker!' });
 
     const url = new URL(request.url);
 
-    // ✅ Handle Google verification file route
+    // ✅ Google site verification file
     if (url.pathname === "/google43ab687c939f6d62.html") {
       return new Response("google-site-verification: google43ab687c939f6d62.html", {
         headers: { "content-type": "text/plain; charset=utf-8" },
       });
     }
 
-    // ✅ Main HTML response
-    const html = `
-<!doctype html>
+    // ✅ Main HTML content
+    const html = `<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mubbi Landscaping | Trusted Lawn Care & Landscaping in Ohio</title>
-  <meta name="description" content="Looking for trusted lawn care or expert landscaping in Columbus, Ohio? Mubbi Landscaping provides professional, eco-friendly, and reliable lawn and landscape services across Columbus, Dayton, Toledo, and Cincinnati." />
-  <meta name="keywords" content="Ohio landscaping, lawn care Columbus Ohio, landscaping Columbus Ohio, organic lawn care Ohio, lawn care Dayton Ohio, ExperiGreen Cincinnati, Mubbi Landscaping" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://landscapingserviceohio.com/" />
-  <!-- ✅ Google Site Verification -->
-  <meta name="google-site-verification" content="google43ab687c939f6d62.html" />
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f6fbf7; color: #12221a; line-height: 1.6; }
-    h1 { color: #1b6b3a; }
-    a { color: #1b6b3a; font-weight: bold; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container { max-width: 1000px; margin: auto; background: #fff; padding: 20px 40px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
-    .cta { margin-top: 20px; }
-    .cta a { background: #1b6b3a; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; }
-    .cta a:hover { background: #15552c; }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mubbi Landscaping | Trusted Lawn Care & Landscaping in Ohio</title>
+<meta name="description" content="Looking for trusted lawn care or expert landscaping in Columbus, Ohio? Mubbi Landscaping provides professional, eco-friendly, and reliable lawn and landscape services across Columbus, Dayton, Toledo, and Cincinnati." />
+<meta name="keywords" content="Ohio landscaping, lawn care Columbus Ohio, landscaping Columbus Ohio, organic lawn care Ohio, lawn care Dayton Ohio, ExperiGreen Cincinnati, Mubbi Landscaping" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://landscapingserviceohio.com/" />
+<meta name="google-site-verification" content="google43ab687c939f6d62.html" />
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; background: #f6fbf7; color: #12221a; line-height: 1.6; }
+h1 { color: #1b6b3a; }
+a { color: #1b6b3a; font-weight: bold; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1000px; margin: auto; background: #fff; padding: 20px 40px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.cta { margin-top: 20px; }
+.cta a { background: #1b6b3a; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; }
+.cta a:hover { background: #15552c; }
+</style>
 </head>
 <body>
   <div class="container">
@@ -52,13 +50,10 @@ export default {
     </div>
   </div>
 </body>
-</html>
-`;
+</html>`;
 
     return new Response(html, {
-      headers: {
-        "content-type": "text/html; charset=utf-8",
-      },
+      headers: { "content-type": "text/html; charset=utf-8" },
     });
   },
 };
