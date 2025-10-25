@@ -4,7 +4,7 @@ export default {
 
     const url = new URL(request.url);
 
-    // ✅ Google site verification file
+    // ✅ Handle Google verification file
     if (url.pathname === "/google43ab687c939f6d62.html") {
       return new Response("google-site-verification: google43ab687c939f6d62.html", {
         headers: { "content-type": "text/plain; charset=utf-8" },
@@ -24,14 +24,45 @@ export default {
 <link rel="canonical" href="https://landscapingserviceohio.com/" />
 <meta name="google-site-verification" content="google43ab687c939f6d62.html" />
 <style>
-body { font-family: Arial, sans-serif; margin: 40px; background: #f6fbf7; color: #12221a; line-height: 1.6; }
-h1 { color: #1b6b3a; }
-a { color: #1b6b3a; font-weight: bold; text-decoration: none; }
-a:hover { text-decoration: underline; }
-.container { max-width: 1000px; margin: auto; background: #fff; padding: 20px 40px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
-.cta { margin-top: 20px; }
-.cta a { background: #1b6b3a; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; }
-.cta a:hover { background: #15552c; }
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background: #f6fbf7;
+  color: #12221a;
+  line-height: 1.6;
+}
+h1 {
+  color: #1b6b3a;
+}
+a {
+  color: #1b6b3a;
+  font-weight: bold;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  padding: 20px 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+.cta {
+  margin-top: 20px;
+}
+.cta a {
+  background: #1b6b3a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.cta a:hover {
+  background: #15552c;
+}
 </style>
 </head>
 <body>
@@ -52,6 +83,7 @@ a:hover { text-decoration: underline; }
 </body>
 </html>`;
 
+    // ✅ Return HTML page
     return new Response(html, {
       headers: { "content-type": "text/html; charset=utf-8" },
     });
