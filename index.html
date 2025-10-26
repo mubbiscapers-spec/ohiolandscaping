@@ -2,80 +2,80 @@ export default {
   async fetch(request, env, ctx) {
     console.info({ message: 'Mubbi Landscaping site served via Worker!' });
 
-    // ✅ Main HTML content
-    const html = `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mubbi Landscaping | Trusted Lawn Care & Landscaping in Ohio</title>
-<meta name="description" content="Looking for trusted lawn care or expert landscaping in Columbus, Ohio? Mubbi Landscaping provides professional, eco-friendly, and reliable lawn and landscape services across Columbus, Dayton, Toledo, and Cincinnati." />
-<meta name="keywords" content="Ohio landscaping, lawn care Columbus Ohio, landscaping Columbus Ohio, organic lawn care Ohio, lawn care Dayton Ohio, ExperiGreen Cincinnati, Mubbi Landscaping" />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://landscapingserviceohio.com/" />
-<style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  background: #f6fbf7;
-  color: #12221a;
-  line-height: 1.6;
-}
-h1 {
-  color: #1b6b3a;
-}
-a {
-  color: #1b6b3a;
-  font-weight: bold;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-.container {
-  max-width: 1000px;
-  margin: auto;
-  background: #fff;
-  padding: 20px 40px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-.cta {
-  margin-top: 20px;
-}
-.cta a {
-  background: #1b6b3a;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-}
-.cta a:hover {
-  background: #15552c;
-}
-</style>
-</head>
-<body>
-  <div class="container">
-    <h1>Trusted Lawn Care & Landscaping in Ohio</h1>
-    <p>
-      Hi, I hope you are doing well. Looking for trusted lawn care services in Columbus, Ohio or expert landscaping in Columbus, Ohio?
-      Mubbi Landscaping offers professional lawn care in Columbus, Dayton, Toledo, and Cincinnati, delivering both residential and commercial
-      solutions that keep your property beautiful year round. From organic lawn care in Columbus, Ohio to reliable lawn care services in
-      Dayton, Ohio and premium results like ExperiGreen Cincinnati, we bring top quality service across Northeast Ohio.
-      Discover why <a href="https://landscapingserviceohio.com/" target="_blank" rel="noopener noreferrer">Ohio Landscaping</a>
-      by Mubbi is the leading choice for lasting, low-maintenance, and eco-friendly Ohio landscaping.
-    </p>
-    <div class="cta">
-      <a href="mailto:mubbiscapers@gmail.com?subject=Estimate%20Request">Contact Mubbi Landscaping</a>
-    </div>
-  </div>
-</body>
-</html>`;
+    const html = `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="google-site-verification" content="e5jGcod_Mpkac-ajwcoMEv-SGfgPb1FtciV96LyBEfA" />
+        <title>Trusted Lawn Care & Landscaping in Ohio | Mubbi Landscaping</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background: #f4faf4;
+            margin: 0;
+            padding: 2rem;
+          }
+          header {
+            text-align: center;
+            padding-bottom: 1.5rem;
+          }
+          header h1 {
+            color: #135b2b;
+            font-size: 2.4rem;
+          }
+          .container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+          }
+          p {
+            color: #333;
+            line-height: 1.6;
+          }
+          strong { color: #135b2b; }
+          a.button {
+            display: inline-block;
+            background: #135b2b;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+          }
+          a.button:hover {
+            background: #0e421f;
+          }
+        </style>
+      </head>
+      <body>
+        <header>
+          <h1>Trusted Lawn Care & Landscaping in Ohio</h1>
+        </header>
+        <div class="container">
+          <p>
+            Looking for trusted lawn care services in Columbus, Ohio, or expert landscaping in Cincinnati? 
+            Mubbi Landscaping offers professional lawn care across Ohio, from organic treatments to full-service 
+            maintenance for homes and businesses. Our experienced team ensures your outdoor space stays beautiful year-round.
+          </p>
+          <p>
+            Discover why <a href="#" style="color:#135b2b; text-decoration:none; font-weight:bold;">OhioLandscapingservices</a> 
+            by Mubbi is the preferred choice for premium, eco-friendly lawn care and landscaping across the state.
+          </p>
+          <a href="#" class="button">Contact Mubbi Landscaping</a>
+        </div>
+      </body>
+      </html>
+    `;
 
-    // ✅ Return HTML response
     return new Response(html, {
       headers: { "content-type": "text/html; charset=utf-8" },
     });
   },
 };
+
