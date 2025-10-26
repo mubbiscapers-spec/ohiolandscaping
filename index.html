@@ -2,100 +2,53 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // ✅ 1. Handle Google verification file
+    // Serve the Google verification file exactly at this path
     if (url.pathname === '/google43ab687c939f6d62.html') {
-      return new Response('google-site-verification: google43ab687c939f6d62.html', {
-        headers: { "content-type": "text/plain" },
-      });
+      return new Response(
+        'google-site-verification: google43ab687c939f6d62.html',
+        {
+          headers: { 'content-type': 'text/plain; charset=utf-8' },
+        }
+      );
     }
 
-    // ✅ 2. Main website HTML
-    const html = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Trusted Lawn Care & Landscaping in Ohio | Mubbi Landscaping</title>
-        <style>
-          body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #f4faf4;
-            margin: 0;
-            padding: 2rem;
-          }
-          header {
-            text-align: center;
-            padding-bottom: 1.5rem;
-          }
-          header h1 {
-            color: #135b2b;
-            font-size: 2.4rem;
-            margin-bottom: 0.5rem;
-          }
-          header p {
-            color: #444;
-            font-size: 1.1rem;
-          }
-          .container {
-            background: #fff;
-            border-radius: 12px;
-            padding: 2rem;
-            max-width: 850px;
-            margin: auto;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          }
-          p {
-            color: #333;
-            line-height: 1.6;
-            font-size: 1.05rem;
-          }
-          strong { color: #135b2b; }
-          a.button {
-            display: inline-block;
-            background: #135b2b;
-            color: #fff;
-            text-decoration: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            font-weight: bold;
-            transition: background 0.3s ease;
-          }
-          a.button:hover {
-            background: #0e421f;
-          }
-        </style>
-      </head>
-      <body>
-        <header>
-          <h1>Trusted Lawn Care & Landscaping in Ohio</h1>
-          <p>Professional lawn and landscape care across Columbus, Dayton, Toledo, and Cincinnati</p>
-        </header>
-        <div class="container">
-          <p>
-            Welcome! If you're searching for trusted lawn care services in Columbus, Dayton, Toledo, or Cincinnati, 
-            <strong>Mubbi Landscaping</strong> is here to help. We deliver professional lawn maintenance, landscaping, 
-            and eco-friendly solutions that enhance the beauty and value of your property.
-          </p>
-          <p>
-            From organic lawn care programs in Columbus to premium landscaping in Dayton and Cincinnati, 
-            we specialize in creating long-lasting, sustainable outdoor spaces for both homes and businesses. 
-            Experience the quality, care, and expertise that set us apart.
-          </p>
-          <p>
-            Discover why <a href="#" style="color:#135b2b; text-decoration:none; font-weight:bold;">OhioLandscapingservices</a> 
-            by Mubbi is the trusted choice for lawn and landscape care throughout Ohio.
-          </p>
-          <a href="#" class="button">Contact Mubbi Landscaping</a>
-        </div>
-      </body>
-      </html>
-    `;
+    // Main HTML — no stray backticks inside content
+    const html = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trusted Lawn Care & Landscaping in Ohio | Mubbi Landscaping</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#f4faf4; margin:0; padding:2rem; }
+    .wrap { max-width:900px; margin:0 auto; background:#fff; border-radius:12px; padding:28px; box-shadow:0 6px 20px rgba(0,0,0,.06); }
+    h1 { color:#135b2b; margin:0 0 12px; font-size:32px; }
+    p { color:#333; line-height:1.6; font-size:17px; }
+    .btn { display:inline-block; margin-top:16px; padding:12px 20px; background:#135b2b; color:#fff; text-decoration:none; border-radius:10px; font-weight:700; }
+    a.anchor { color:#135b2b; font-weight:700; text-decoration:none; }
+    footer { margin-top:20px; color:#666; font-size:13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Trusted Lawn Care & Landscaping in Ohio</h1>
+    <p>
+      Welcome — Mubbi Landscaping provides professional lawn care and landscaping services across Columbus, Dayton,
+      Toledo, Cincinnati and surrounding Ohio areas. From organic lawn programs to full landscape installations,
+      we deliver reliable, eco-friendly results for both residential and commercial properties.
+    </p>
+    <p>
+      Discover why <a class="anchor" href="#">OhioLandscapingservices</a> by Mubbi is the trusted choice for quality,
+      long-lasting outdoor care.
+    </p>
+    <a class="btn" href="#">Contact Mubbi Landscaping</a>
+    <footer>© ${new Date().getFullYear()} Mubbi Landscaping</footer>
+  </div>
+</body>
+</html>`;
 
-    // ✅ 3. Return main HTML
     return new Response(html, {
-      headers: { "content-type": "text/html; charset=utf-8" },
+      headers: { 'content-type': 'text/html; charset=utf-8' },
     });
-  },
+  }
 };
