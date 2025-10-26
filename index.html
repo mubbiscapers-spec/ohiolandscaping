@@ -1,18 +1,25 @@
 export default {
   async fetch(request, env, ctx) {
-    console.info({ message: 'Mubbi Landscaping site served via Worker!' });
+    const url = new URL(request.url);
 
+    // ✅ 1. Handle Google verification file
+    if (url.pathname === '/google43ab687c939f6d62.html') {
+      return new Response('google-site-verification: google43ab687c939f6d62.html', {
+        headers: { "content-type": "text/plain" },
+      });
+    }
+
+    // ✅ 2. Main website HTML
     const html = `
       <!DOCTYPE html>
       <html lang="en">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="google-site-verification" content="e5jGcod_Mpkac-ajwcoMEv-SGfgPb1FtciV96LyBEfA" />
         <title>Trusted Lawn Care & Landscaping in Ohio | Mubbi Landscaping</title>
         <style>
           body {
-            font-family: Arial, sans-serif;
+            font-family: "Segoe UI", Arial, sans-serif;
             background: #f4faf4;
             margin: 0;
             padding: 2rem;
@@ -24,18 +31,24 @@ export default {
           header h1 {
             color: #135b2b;
             font-size: 2.4rem;
+            margin-bottom: 0.5rem;
+          }
+          header p {
+            color: #444;
+            font-size: 1.1rem;
           }
           .container {
             background: #fff;
             border-radius: 12px;
             padding: 2rem;
-            max-width: 800px;
+            max-width: 850px;
             margin: auto;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
           }
           p {
             color: #333;
             line-height: 1.6;
+            font-size: 1.05rem;
           }
           strong { color: #135b2b; }
           a.button {
@@ -43,9 +56,10 @@ export default {
             background: #135b2b;
             color: #fff;
             text-decoration: none;
-            padding: 0.75rem 1.5rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 8px;
             margin-top: 1rem;
+            font-weight: bold;
             transition: background 0.3s ease;
           }
           a.button:hover {
@@ -56,16 +70,22 @@ export default {
       <body>
         <header>
           <h1>Trusted Lawn Care & Landscaping in Ohio</h1>
+          <p>Professional lawn and landscape care across Columbus, Dayton, Toledo, and Cincinnati</p>
         </header>
         <div class="container">
           <p>
-            Looking for trusted lawn care services in Columbus, Ohio, or expert landscaping in Cincinnati? 
-            Mubbi Landscaping offers professional lawn care across Ohio, from organic treatments to full-service 
-            maintenance for homes and businesses. Our experienced team ensures your outdoor space stays beautiful year-round.
+            Welcome! If you're searching for trusted lawn care services in Columbus, Dayton, Toledo, or Cincinnati, 
+            <strong>Mubbi Landscaping</strong> is here to help. We deliver professional lawn maintenance, landscaping, 
+            and eco-friendly solutions that enhance the beauty and value of your property.
+          </p>
+          <p>
+            From organic lawn care programs in Columbus to premium landscaping in Dayton and Cincinnati, 
+            we specialize in creating long-lasting, sustainable outdoor spaces for both homes and businesses. 
+            Experience the quality, care, and expertise that set us apart.
           </p>
           <p>
             Discover why <a href="#" style="color:#135b2b; text-decoration:none; font-weight:bold;">OhioLandscapingservices</a> 
-            by Mubbi is the preferred choice for premium, eco-friendly lawn care and landscaping across the state.
+            by Mubbi is the trusted choice for lawn and landscape care throughout Ohio.
           </p>
           <a href="#" class="button">Contact Mubbi Landscaping</a>
         </div>
@@ -73,9 +93,9 @@ export default {
       </html>
     `;
 
+    // ✅ 3. Return main HTML
     return new Response(html, {
       headers: { "content-type": "text/html; charset=utf-8" },
     });
   },
 };
-
