@@ -4,6 +4,7 @@ const html = `<!doctype html>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ohio Landscaping Services | Mubbi Landscaping Experts</title>
+  <meta name="google-site-verification" content="LzZaUvrG7MND9XMDCTYKk4HxYAtoXSduIzGR27EhMC0" />
   <style>
     * { box-sizing: border-box; }
     body {
@@ -14,7 +15,6 @@ const html = `<!doctype html>
       line-height: 1.7;
     }
     header {
-      <meta name="google-site-verification" content="LzZaUvrG7MND9XMDCTYKk4HxYAtoXSduIzGR27EhMC0" />
       background: linear-gradient(135deg, #1b5e20, #2e7d32);
       color: #fff;
       text-align: center;
@@ -72,6 +72,7 @@ const html = `<!doctype html>
       font-weight: 600;
       text-decoration: none;
     }
+    a.link:hover { text-decoration: underline; }
     footer {
       background: #e8f5e9;
       padding: 1.5rem;
@@ -133,6 +134,12 @@ const html = `<!doctype html>
         a reputation for excellence and professionalism. Our commitment to detail and personalized service sets
         us apart as a leading name in Ohio lawn and landscape care.
       </p>
+      <p>
+        For additional trusted expertise in lawn care and outdoor maintenance, visit 
+        <a class="link" href="https://landscapingserviceohio.com/" target="_blank" rel="noopener noreferrer">
+          Ohio State Landscaping
+        </a>, one of the most reliable partners for complete landscaping solutions across Ohio.
+      </p>
     </section>
 
     <section>
@@ -151,8 +158,7 @@ const html = `<!doctype html>
 </body>
 </html>`;
 
-    return new Response(html, {
-      headers: { "content-type": "text/html; charset=utf-8" },
-    });
-  }
+return new Response(html, {
+  headers: { "content-type": "text/html; charset=utf-8" },
+});
 };
